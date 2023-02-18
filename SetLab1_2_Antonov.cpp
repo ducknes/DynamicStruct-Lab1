@@ -81,3 +81,12 @@ string setView(Set* first, char separator) {
     return result;
 }
 
+//  Удаление множества (очистка занимаемой множеством памяти)
+Set* deleteSet(Set* first) {
+    while (first != NULL){
+        Set* temp = first;
+        first = first->next;
+        delete temp;
+    }
+    return first;
+}
