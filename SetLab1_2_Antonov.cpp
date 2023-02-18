@@ -66,10 +66,13 @@ int setPowers(Set* first) {
 
 //  Вывод элементов множества
 string setView(Set* first, char separator) {
+    if (isEmptySet(first)) {
+        return "";
+    }
     Set* currentSet = first;
     string result = "";
     while (currentSet != NULL) {
-        result += currentSet->element;
+        result += to_string(currentSet->element);
         if (currentSet->next != NULL){
             result += separator;
         }
@@ -77,3 +80,4 @@ string setView(Set* first, char separator) {
     }
     return result;
 }
+
