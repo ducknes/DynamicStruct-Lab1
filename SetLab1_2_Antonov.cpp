@@ -40,16 +40,27 @@ Set* addNewElement(Set* first, int element) {
 
 //  Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
-Set* createNewSet(int quantity, int min, int max) {
-    if (!quantity) {
+Set* createNewSet(int size, int min, int max) {
+    if (size > 0) {
         return NULL;
     }
 
     Set* newSet = new Set;
     srand(time(NULL));
-    for (int i = 0; i < quantity; i++){
+    for (int i = 0; i < size; i++){
         newSet = addNewElement(newSet, rand() % (max - min + 1) + min);
     }
     return newSet;
+}
+
+//  Мощность множества
+int setPowers(Set* first) {
+    long count = 0;
+    Set* currentSet = first;
+    while (currentSet != NULL) {
+        count++;
+        currentSet = currentSet->next;
+    }
+    return count;
 }
 
