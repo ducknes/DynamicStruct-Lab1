@@ -27,7 +27,7 @@ Set* createNewSet(int quantity, int min, int max) {}
 int setPowers(Set* first) {}
 
 //  Вывод элементов множества
-string setView(Set* first, string separator) {}
+string setView(Set* first, char separator) {}
 
 //  Удаление множества (очистка занимаемой множеством памяти)
 Set* deleteSet(Set* first) {}

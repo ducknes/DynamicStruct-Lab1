@@ -64,3 +64,16 @@ int setPowers(Set* first) {
     return count;
 }
 
+//  Вывод элементов множества
+string setView(Set* first, char separator) {
+    Set* currentSet = first;
+    string result = "";
+    while (currentSet != NULL) {
+        result += currentSet->element;
+        if (currentSet->next != NULL){
+            result += separator;
+        }
+        currentSet = currentSet->next;
+    }
+    return result;
+}
