@@ -16,7 +16,7 @@ bool isSetHasElement(Set* first, int element) {
         return false;
     } else {
         Set* current = first;
-        while (current -> next)
+        while (current != NULL)
         {
             if (current -> element == element){
                 return true;
@@ -27,3 +27,10 @@ bool isSetHasElement(Set* first, int element) {
     return false;
 }
 
+//  Добавление нового элемента в начало множества
+Set* addNewElement(Set* first, int element) {
+   if (!isSetHasElement(first, element))
+   {
+    
+   }
+}

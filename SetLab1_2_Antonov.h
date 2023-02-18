@@ -3,8 +3,8 @@
 using namespace std;
 
 struct Set {
-    int element;
-    Set* next;
+    int element = 0;
+    Set* next = NULL;
 };
 
 //  Создание пустого множества
