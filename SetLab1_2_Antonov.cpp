@@ -12,7 +12,7 @@ bool isEmptySet(Set* first) {
 
 //  Проверка элемента на принадлежность множеству
 bool isSetHasElement(Set* first, int element) {
-    if (isEmptySet(first) == true) {
+    if (isEmptySet(first)) {
         return false;
     } else {
         Set* current = first;
@@ -41,15 +41,21 @@ Set* addNewElement(Set* first, int element) {
 //  Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
 Set* createNewSet(int size, int min, int max) {
-    if (size > 0) {
+    if (size <= 0) {
         return NULL;
     }
 
     Set* newSet = new Set;
     srand(time(NULL));
-    for (int i = 0; i < size; i++){
+    int currentSize = 1;
+    while (currentSize < size) {
+        int temp = newSet->element;
         newSet = addNewElement(newSet, rand() % (max - min + 1) + min);
+        if (temp != newSet->element) {
+            currentSize++;
+        }
     }
+
     return newSet;
 }
 
