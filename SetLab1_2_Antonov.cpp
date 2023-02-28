@@ -1,16 +1,16 @@
 #include "SetLab1_2_Antonov.h"
 
-//  Создание пустого множества
+// F2 Создание пустого множества
 Set* createEmptySet() {
     return new Set();
 }
 
-//  Проверка на пустоту множества
+// F2 Проверка на пустоту множества
 bool isEmptySet(Set* first) {
     return first == nullptr ? true : false;
 }
 
-//  Проверка элемента на принадлежность множеству
+// F3 Проверка элемента на принадлежность множеству
 bool isSetHasElement(Set* first, int element) {
     if (isEmptySet(first)) {
         return false;
@@ -27,7 +27,7 @@ bool isSetHasElement(Set* first, int element) {
     return false;
 }
 
-//  Добавление нового элемента в начало множества
+// F4 Добавление нового элемента в начало множества
 Set* addNewElement(Set* first, int element) {
     if (!isSetHasElement(first, element)){
         Set* newSet = new Set;
@@ -38,7 +38,7 @@ Set* addNewElement(Set* first, int element) {
     return first;
 }
 
-//  Создание множества по заданным параметрам, проверяя возможность
+// F5 Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
 Set* createNewSet(int size, int min, int max) {
     if (size <= 0) {
@@ -59,7 +59,7 @@ Set* createNewSet(int size, int min, int max) {
     return newSet;
 }
 
-//  Мощность множества
+// F6 Мощность множества
 int setPowers(Set* first) {
     long count = 0;
     Set* currentSet = first;
@@ -70,7 +70,7 @@ int setPowers(Set* first) {
     return count;
 }
 
-//  Вывод элементов множества
+// F7 Вывод элементов множества
 string setView(Set* first, char separator) {
     if (isEmptySet(first)) {
         return "";
@@ -87,7 +87,7 @@ string setView(Set* first, char separator) {
     return result;
 }
 
-//  Удаление множества (очистка занимаемой множеством памяти)
+// F8 Удаление множества (очистка занимаемой множеством памяти)
 Set* deleteSet(Set* first) {
     while (first != NULL){
         Set* temp = first;
@@ -95,4 +95,34 @@ Set* deleteSet(Set* first) {
         delete temp;
     }
     return first;
+}
+
+// F9 Подмножестов А-B
+bool isSubSet(Set* first, Set* second) {
+
+}
+
+// F10 Равенство двух множеств А-В
+bool isSetsEquals(Set* first, Set* second) {
+
+}
+
+// F11 Объединение двух множеств
+Set* unionOfSets(Set* first, Set* second) {
+
+}
+
+// F12 Пересечение двух множеств
+Set* intersectionsOfSets(Set* first, Set* second) {
+
+}
+
+// F13 Разность множеств
+Set* differenceOfSets(Set* first, Set* second) {
+
+}
+
+// F14 Симметричная разность
+Set* symmetricDifferenceOfSets(Set* first, Set* second) {
+    
 }

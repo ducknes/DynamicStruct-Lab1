@@ -8,29 +8,45 @@ struct Set {
     Set* next;
 };
 
-//  Создание пустого множества
+// F1  Создание пустого множества
 Set* createEmptySet();
 
-//  Проверка на пустоту множества
+// F2 Проверка на пустоту множества
 bool isEmptySet(Set* first);
 
-//  Проверка элемента на принадлежность множеству
+// F3 Проверка элемента на принадлежность множеству
 bool isSetHasElement(Set* first, int element); 
 
-//  Добавление нового элемента в начало множества
+// F4 Добавление нового элемента в начало множества
 Set* addNewElement(Set* first, int element); 
 
-//  Создание множества по заданным параметрам, проверяя возможность
+// F5 Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
 Set* createNewSet(int quantity, int min, int max); 
 
-//  Мощность множества
+// F6 Мощность множества
 int setPowers(Set* first); 
 
-//  Вывод элементов множества
+// F7 Вывод элементов множества
 string setView(Set* first, char separator); 
 
-//  Удаление множества (очистка занимаемой множеством памяти)
+// F8 Удаление множества (очистка занимаемой множеством памяти)
 Set* deleteSet(Set* first);
 
-// Подмножестов А-B
+// F9 Подмножестов А-B
+bool isSubSet(Set* first, Set* second);
+
+// F10 Равенство двух множеств А-В
+bool isSetsEquals(Set* first, Set* second);
+
+// F11 Объединение двух множеств
+Set* unionOfSets(Set* first, Set* second);
+
+// F12 Пересечение двух множеств
+Set* intersectionsOfSets(Set* first, Set* second);
+
+// F13 Разность множеств
+Set* differenceOfSets(Set* first, Set* second);
+
+// F14 Симметричная разность
+Set* symmetricDifferenceOfSets(Set* first, Set* second);
