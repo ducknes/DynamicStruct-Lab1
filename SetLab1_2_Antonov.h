@@ -32,3 +32,5 @@ string setView(Set* first, char separator);
 
 //  Удаление множества (очистка занимаемой множеством памяти)
 Set* deleteSet(Set* first);
+
+// Подмножестов А-B
