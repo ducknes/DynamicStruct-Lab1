@@ -149,7 +149,18 @@ Set* unionOfSets(Set* first, Set* second) {
 
 // F12 Пересечение двух множеств
 Set* intersectionsOfSets(Set* first, Set* second) {
+    Set* current = first;
+    Set* intersection = createEmptySet();
 
+    while (current != NULL) {
+        if (!isEmptySet(current)) {
+            if (isSetHasElement(second, current->element)){
+                intersection = addNewElement(intersection, current->element);
+            }
+            current = current->next;
+        }
+    }
+    return intersection;
 }
 
 // F13 Разность множеств

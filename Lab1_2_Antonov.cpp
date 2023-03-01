@@ -22,6 +22,8 @@ int main(int argc, char **argv){
     Set* empty = createEmptySet();
     Set* unionSet = unionOfSets(mySet, secondSet);
     cout << "После объединения: " << setView(unionSet, *" ") << endl;
-
+    
+    Set* intersectionSet = intersectionsOfSets(mySet, secondSet);
+    cout << "Пересечение: " << setView(intersectionSet, *" ") << endl;
     return 0;
 }
