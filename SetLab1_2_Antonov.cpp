@@ -45,13 +45,13 @@ Set* createNewSet(int size, int min, int max) {
         return NULL;
     }
     
+    Set* newSet = new Set{};
+    newSet->element = min + rand() % (max - min + 1);
     srand(time(NULL));
-    Set* newSet = createEmptySet();
-    newSet = addNewElement(newSet, rand() % (max - min + 1) + min);
     int currentSize = 1;
     while (currentSize < size) {
         int temp = newSet->element;
-        newSet = addNewElement(newSet, rand() % (max - min + 1) + min);
+        newSet = addNewElement(newSet, min + rand() % (max - min + 1));
         if (temp != newSet->element) {
             currentSize++;
         }
@@ -104,31 +104,51 @@ bool isSubSet(Set* first, Set* second) {
         return true;
     }
 
-    int currentSubCount = 0;
-    Set* currentSecond = second;
-    while (currentSecond != NULL) {
-        Set* currentFirst = first;
-        while (currentFirst != NULL) {
-            if (currentFirst->element == currentSecond->element) {
-                currentSubCount++;
-                break;
-            }
-            currentFirst = currentFirst->next;
+    if (setPowers(first) > setPowers(second)) {
+        return false;
+    }
+    
+    Set* currentFirst = first;
+    while (currentFirst != NULL) {
+        if (!isSetHasElement(second, currentFirst->element)) {
+            return false;
         }
-        currentSecond = currentSecond->next;
+        currentFirst = currentFirst->next;
     }
 
-    return currentSubCount == setPowers(first);
+    return true;
 }
 
 // F10 Равенство двух множеств А-В
 bool isSetsEquals(Set* first, Set* second) {
-
+    return isSubSet(first, second) && isSubSet(second, first);
 }
 
 // F11 Объединение двух множеств
 Set* unionOfSets(Set* first, Set* second) {
 
+    Set* unionSet = createEmptySet();
+    Set* currentFirst = first;
+    Set* currentSecond = second;
+    
+    while (currentFirst != NULL || currentSecond != NULL) {
+        
+        if (!isEmptySet(currentFirst)) {
+            unionSet = addNewElement(unionSet, currentFirst->element);
+            currentFirst = currentFirst->next;
+        } else {
+            currentFirst = currentFirst;
+        }
+
+        if (!isEmptySet(currentSecond)) {
+            unionSet = addNewElement(unionSet, currentSecond->element);
+            currentSecond = currentSecond->next;
+        } else {
+            currentSecond = currentSecond;
+        }
+    }
+    
+    return unionSet;
 }
 
 // F12 Пересечение двух множеств
