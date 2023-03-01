@@ -2,7 +2,7 @@
 
 // F2 Создание пустого множества
 Set* createEmptySet() {
-    return new Set();
+    return NULL;
 }
 
 // F2 Проверка на пустоту множества
@@ -44,9 +44,10 @@ Set* createNewSet(int size, int min, int max) {
     if (size <= 0) {
         return NULL;
     }
-
-    Set* newSet = new Set;
+    
     srand(time(NULL));
+    Set* newSet = createEmptySet();
+    newSet = addNewElement(newSet, rand() % (max - min + 1) + min);
     int currentSize = 1;
     while (currentSize < size) {
         int temp = newSet->element;
@@ -112,7 +113,9 @@ bool isSubSet(Set* first, Set* second) {
                 currentSubCount++;
                 break;
             }
+            currentFirst = currentFirst->next;
         }
+        currentSecond = currentSecond->next;
     }
 
     return currentSubCount == setPowers(first);
