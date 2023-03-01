@@ -3,12 +3,12 @@
 int main(int argc, char **argv){
     setlocale(LC_ALL, "Russian");
 
-    Set* mySet = createNewSet(5, 0, 10);
+    Set* mySet = createNewSet(6 + rand() % 3, 0, 100);
     string setElements = setView(mySet, *" ");
     cout << "Элементы: " << setElements << endl;
     cout << "Мощность множества: " << setPowers(mySet) << endl;
 
-    Set* secondSet = createNewSet(5, 0, 10);
+    Set* secondSet = createNewSet(6 + rand() % 3, 0, 100);
     string setElements2 = setView(secondSet, *" ");
     cout << "Элементы: " << setElements2 << endl;
     cout << "Мощность множества: " << setPowers(secondSet) << endl;
@@ -25,5 +25,8 @@ int main(int argc, char **argv){
     
     Set* intersectionSet = intersectionsOfSets(mySet, secondSet);
     cout << "Пересечение: " << setView(intersectionSet, *" ") << endl;
+
+    Set* differenceSet = differenceOfSets(mySet, secondSet);
+    cout << "Разность: " << setView(differenceSet, *" ") << endl;
     return 0;
 }
