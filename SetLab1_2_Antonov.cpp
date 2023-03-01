@@ -99,7 +99,23 @@ Set* deleteSet(Set* first) {
 
 // F9 Подмножестов А-B
 bool isSubSet(Set* first, Set* second) {
+    if (isEmptySet(first)) {
+        return true;
+    }
 
+    int currentSubCount = 0;
+    Set* currentSecond = second;
+    while (currentSecond != NULL) {
+        Set* currentFirst = first;
+        while (currentFirst != NULL) {
+            if (currentFirst->element == currentSecond->element) {
+                currentSubCount++;
+                break;
+            }
+        }
+    }
+
+    return currentSubCount == setPowers(first);
 }
 
 // F10 Равенство двух множеств А-В
@@ -124,5 +140,5 @@ Set* differenceOfSets(Set* first, Set* second) {
 
 // F14 Симметричная разность
 Set* symmetricDifferenceOfSets(Set* first, Set* second) {
-    
+
 }
