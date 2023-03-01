@@ -132,19 +132,15 @@ Set* unionOfSets(Set* first, Set* second) {
     Set* currentSecond = second;
     
     while (currentFirst != NULL || currentSecond != NULL) {
-        
+
         if (!isEmptySet(currentFirst)) {
             unionSet = addNewElement(unionSet, currentFirst->element);
             currentFirst = currentFirst->next;
-        } else {
-            currentFirst = currentFirst;
         }
 
         if (!isEmptySet(currentSecond)) {
             unionSet = addNewElement(unionSet, currentSecond->element);
             currentSecond = currentSecond->next;
-        } else {
-            currentSecond = currentSecond;
         }
     }
     

@@ -20,8 +20,8 @@ int main(int argc, char **argv){
     cout << "F10 " << boolalpha << isSetsEquals(mySet, secondSet) << endl;
 
     Set* empty = createEmptySet();
-    Set* unionSet = unionOfSets(mySet, empty);
-    cout << setView(unionSet, *" ") << endl;
+    Set* unionSet = unionOfSets(mySet, secondSet);
+    cout << "После объединения: " << setView(unionSet, *" ") << endl;
 
     return 0;
 }
