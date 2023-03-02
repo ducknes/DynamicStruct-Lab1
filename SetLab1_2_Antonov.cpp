@@ -1,6 +1,6 @@
 #include "SetLab1_2_Antonov.h"
 
-// F2 Создание пустого множества
+// F1 Создание пустого множества
 Set* createEmptySet() {
     return NULL;
 }
@@ -14,15 +14,14 @@ bool isEmptySet(Set* first) {
 bool isSetHasElement(Set* first, int element) {
     if (isEmptySet(first)) {
         return false;
-    } else {
-        Set* current = first;
-        while (current != NULL)
-        {
-            if (current -> element == element){
-                return true;
-            }
-            current = current -> next;
+    } 
+    Set* current = first;
+    while (current != NULL)
+    {
+        if (current -> element == element){
+            return true;
         }
+        current = current -> next;
     }
     return false;
 }
@@ -42,6 +41,14 @@ Set* addNewElement(Set* first, int element) {
 //  создания множества
 Set* createNewSet(int size, int min, int max) {
     if (size <= 0) {
+        return NULL;
+    }
+
+    if (max < min) {
+        return NULL;
+    }
+
+    if (size > max - min + 1) {
         return NULL;
     }
     
@@ -79,13 +86,11 @@ string setView(Set* first, char separator) {
     Set* currentSet = first;
     string result = "";
     while (currentSet != NULL) {
-        result += to_string(currentSet->element);
-        if (currentSet->next != NULL){
-            result += separator;
-        }
+        result += to_string(currentSet->element) + separator;
         currentSet = currentSet->next;
     }
-    return result;
+
+    return result.erase(result.size() - 1);
 }
 
 // F8 Удаление множества (очистка занимаемой множеством памяти)
@@ -181,5 +186,5 @@ Set* differenceOfSets(Set* first, Set* second) {
 
 // F14 Симметричная разность
 Set* symmetricDifferenceOfSets(Set* first, Set* second) {
-
+    return differenceOfSets(unionOfSets(first, second), intersectionsOfSets(second, first));
 }

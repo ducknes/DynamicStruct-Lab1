@@ -2,31 +2,15 @@
 
 int main(int argc, char **argv){
     setlocale(LC_ALL, "Russian");
-
-    Set* mySet = createNewSet(6 + rand() % 3, 0, 100);
-    string setElements = setView(mySet, *" ");
-    cout << "Элементы: " << setElements << endl;
-    cout << "Мощность множества: " << setPowers(mySet) << endl;
-
-    Set* secondSet = createNewSet(6 + rand() % 3, 0, 100);
-    string setElements2 = setView(secondSet, *" ");
-    cout << "Элементы: " << setElements2 << endl;
-    cout << "Мощность множества: " << setPowers(secondSet) << endl;
-
-    cout << &mySet << " " << &secondSet << endl;
-
-    cout << "F9 " <<  boolalpha << isSubSet(mySet, secondSet) << endl;
-
-    cout << "F10 " << boolalpha << isSetsEquals(mySet, secondSet) << endl;
-
-    Set* empty = createEmptySet();
-    Set* unionSet = unionOfSets(mySet, secondSet);
-    cout << "После объединения: " << setView(unionSet, *" ") << endl;
     
-    Set* intersectionSet = intersectionsOfSets(mySet, secondSet);
-    cout << "Пересечение: " << setView(intersectionSet, *" ") << endl;
-
-    Set* differenceSet = differenceOfSets(mySet, secondSet);
-    cout << "Разность: " << setView(differenceSet, *" ") << endl;
+    srand(time(NULL));
+    Set* set = createNewSet(6 + rand() % 3, 10, 100);
+    cout << "Создано множество: " << setView(set, ' ') << endl;
+    cout << "Мощность множества: " << setPowers(set) << endl;
+    cout << "Вывод множества: " << setView(set, ',') << endl;
+    set = deleteSet(set);
+    cout << "Множество удалено" << endl;
+    cout << "Вывод множества: " << setView(set, ' ') << endl;
+    cout << "Мощность множества: " << setPowers(set) << endl;
     return 0;
 }
