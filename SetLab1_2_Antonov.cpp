@@ -52,9 +52,9 @@ Set* createNewSet(int size, int min, int max) {
         return NULL;
     }
     
-    Set* newSet = new Set{};
+    Set* newSet = new Set{};    
     newSet->element = min + rand() % (max - min + 1);
-    srand(time(NULL));
+    srand(time(NULL));    
     int currentSize = 1;
     while (currentSize < size) {
         int temp = newSet->element;
