@@ -22,7 +22,7 @@ Set* addNewElement(Set* first, int element);
 
 // F5 Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
-Set* createNewSet(int quantity, int min, int max); 
+Set* createNewSet(int quantity, int min, int max, char whichCreate); 
 
 // F6 Мощность множества
 int setPowers(Set* first); 

@@ -39,7 +39,7 @@ Set* addNewElement(Set* first, int element) {
 
 // F5 Создание множества по заданным параметрам, проверяя возможность
 //  создания множества
-Set* createNewSet(int size, int min, int max) {
+Set* createNewSet(int size, int min, int max, char whichCreate) {
     if (size <= 0) {
         return NULL;
     }
@@ -51,17 +51,38 @@ Set* createNewSet(int size, int min, int max) {
     if (size > max - min + 1) {
         return NULL;
     }
-    
+
     Set* newSet = new Set{};    
-    newSet->element = min + rand() % (max - min + 1);
-    srand(time(NULL));    
     int currentSize = 1;
-    while (currentSize < size) {
-        int temp = newSet->element;
-        newSet = addNewElement(newSet, min + rand() % (max - min + 1));
-        if (temp != newSet->element) {
-            currentSize++;
+
+    switch (whichCreate)
+    {
+    case 'A':
+        newSet->element = rand() % (((max - min + 1) + min) / 3) * 3;
+        srand(time(NULL));    
+        
+        while (currentSize < size) {
+            int temp = newSet->element;
+            newSet = addNewElement(newSet, rand() % (((max - min + 1) + min) / 3) * 3);
+            if (temp != newSet->element) {
+                currentSize++;
+            }
         }
+        break;
+    case 'B':
+        newSet->element = (rand() % ((max / 2 - min / 2))) * 2 + 1;
+        srand(time(NULL));
+        while (currentSize < size) {
+            int temp = newSet->element;
+            newSet = addNewElement(newSet, (rand() % ((max / 2 - min / 2))) * 2 + 1);
+            if (temp != newSet->element) {
+                currentSize++;
+            }
+        }
+        break;
+    
+    default:
+        break;
     }
 
     return newSet;
@@ -136,17 +157,14 @@ Set* unionOfSets(Set* first, Set* second) {
     Set* currentFirst = first;
     Set* currentSecond = second;
     
-    while (currentFirst != NULL || currentSecond != NULL) {
+    while (currentFirst != NULL) {
+        unionSet = addNewElement(unionSet, currentFirst->element);
+        currentFirst = currentFirst->next;
+    }
 
-        if (!isEmptySet(currentFirst)) {
-            unionSet = addNewElement(unionSet, currentFirst->element);
-            currentFirst = currentFirst->next;
-        }
-
-        if (!isEmptySet(currentSecond)) {
-            unionSet = addNewElement(unionSet, currentSecond->element);
-            currentSecond = currentSecond->next;
-        }
+    while (currentSecond != NULL) {
+        unionSet = addNewElement(unionSet, currentSecond->element);
+        currentSecond = currentSecond->next;
     }
     
     return unionSet;
